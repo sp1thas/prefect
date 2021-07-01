@@ -689,7 +689,7 @@ class Client:
             total=retry_total,
             backoff_factor=1,
             status_forcelist=[429, 500, 502, 503, 504],
-            method_whitelist=["DELETE", "GET", "POST"],
+            allowed_methods=["DELETE", "GET", "POST"],
         )
         session.mount("https://", requests.adapters.HTTPAdapter(max_retries=retries))
         response = self._send_request(
